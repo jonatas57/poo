@@ -1,21 +1,27 @@
 package atari;
 
+import atari.games.Game;
+import atari.games.tictactoe.TicTacToe;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Atari extends Application {
 
+  private static Stage stage;
+  private static Scene scene;
+
   @Override
-  public void start(Stage stage) throws Exception {
-    GridPane root = new GridPane();
+  public void start(Stage stage) {
+    Atari.stage = stage;
+    StackPane root = new StackPane();
+    scene = new Scene(root, 400, 400);
     
-    Scene scene = new Scene(root, 500, 500);
+    Menu menu = new GameSelector(new TicTacToe());
+    root.getChildren().addAll(menu);
     
-    Menu menu = new Menu(new Button(), new Button());
-    
-    root.getChildren().add(menu.getMenu());
     stage.setTitle("Atari");
     stage.setScene(scene);
     stage.show();
@@ -23,6 +29,14 @@ public class Atari extends Application {
 
   public static void main(String[] args) {
     launch(args);
+  }
+
+  public static Scene getScene() {
+    return Atari.scene;
+  }
+
+  public static void setScene(Scene scene) {
+    Atari.stage.setScene(scene);
   }
 
 }

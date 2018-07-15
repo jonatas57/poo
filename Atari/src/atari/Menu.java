@@ -1,21 +1,20 @@
 package atari;
 
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 
-public class Menu {
-  GridPane menu;
+public class Menu extends GridPane {
+
   public Menu(Button ...buttons) {
-    this.menu = new GridPane();
-    int i = 0;
-    for (Button btn : buttons) {
-      StackPane button = btn.getButton();
-      GridPane.setConstraints(button, i++, 0);
-      menu.getChildren().add(button);
+    super();
+    for (int i = 0;i < buttons.length;i++) {
+      super.add(buttons[i], 0, i);
     }
+    super.setVgap(5);
+    super.setMaxWidth(100);
+    super.setMaxHeight(buttons.length * 35);
   }
-  
-  public GridPane getMenu() {
-    return this.menu;
+
+  public void addButtons(Button... buttons) {
+    super.getChildren().addAll(buttons);
   }
 }
