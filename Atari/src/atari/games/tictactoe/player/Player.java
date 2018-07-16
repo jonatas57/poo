@@ -1,7 +1,10 @@
 package atari.games.tictactoe.player;
 
+import atari.games.tictactoe.Board;
+
 public abstract class Player {
-  public static int[] position;
+  protected static int[] position;
+  protected Board board;
   
   public abstract void play();
 }

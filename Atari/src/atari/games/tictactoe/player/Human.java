@@ -6,10 +6,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 
 public class Human extends Player {
-
+  private Board board;
+  public Human(Board board) {
+    this.board = board;
+  }
+  
   @Override
   public void play() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
   }
 
 
